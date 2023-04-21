@@ -2,6 +2,7 @@ from collections import deque
 from enum import Enum
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 from rl.k_armed_test_bed.test_bed import KArmedTestBed
 
@@ -68,6 +69,10 @@ class Agent:
 
     def plot_average_reward(self, axis, label):
         axis.plot(self.steps_hist, self.average_reward, label=label)
-        axis.set_xlabel("steps")
-        axis.set_ylabel("average reward")
+        if axis == plt:
+            axis.xlabel("steps")
+            axis.ylabel("average reward")
+        else:
+            axis.set_xlabel("steps")
+            axis.set_ylabel("average reward")
         axis.legend()
